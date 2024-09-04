@@ -4,6 +4,7 @@ import { CgProfile } from 'react-icons/cg';
 import { CiSearch } from 'react-icons/ci';
 import { LuShoppingCart } from 'react-icons/lu';
 import { RxCross1 } from 'react-icons/rx';
+import { Link } from 'react-router-dom';
 import Logo from '../../assets/logo/logo.jpg';
 import Navlist from '../Navlist';
 
@@ -63,9 +64,9 @@ export default function StickyNavbar() {
                                     onClick={handleOpenSearch}
                                 />
                             </div>
-                            <div className="mr-4  lg:block">
+                            <Link to="/cart" className="mr-4  lg:block">
                                 <LuShoppingCart className="cursor-pointer h-6 w-6" />
-                            </div>
+                            </Link>
                             <div
                                 className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
                                 onClick={() => setOpenNav(!openNav)}

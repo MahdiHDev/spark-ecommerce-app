@@ -65,7 +65,7 @@ function Navlist({ visibility, nav }) {
                         <li className="cursor-pointer p-2 ">Check Shirt</li>
                     </ul>
                 )}
-                <div className="absolute py-2 w-[200px] hidden lg:group-hover:block shadow-lg bg-gray-100">
+                <div className="absolute py-2 w-[200px] hidden lg:group-hover:block shadow-lg bg-gray-100 z-10">
                     <div className="p-2 cursor-pointer ">
                         <ul className="w-full">
                             <li className="px-4 py-2 border-b border-gray-300 text-black capitalize list-none text-sm cursor-pointer font-medium">
@@ -135,7 +135,7 @@ function Navlist({ visibility, nav }) {
                         <li className="cursor-pointer p-2 ">Check Shirt</li>
                     </ul>
                 )}
-                <div className="absolute py-2 w-[200px] hidden lg:group-hover:block shadow-lg bg-gray-100">
+                <div className="absolute py-2 w-[200px] hidden lg:group-hover:block shadow-lg bg-gray-100 z-10">
                     <div className="p-2 cursor-pointer ">
                         <ul className="w-full">
                             <li className="px-4 py-2 border-b border-gray-300 text-black capitalize list-none text-sm cursor-pointer font-medium">
@@ -205,7 +205,7 @@ function Navlist({ visibility, nav }) {
                         <li className="cursor-pointer p-2 ">Check Shirt</li>
                     </ul>
                 )}
-                <div className="absolute py-2 w-[200px] hidden lg:group-hover:block shadow-lg bg-gray-100">
+                <div className="absolute py-2 w-[200px] hidden lg:group-hover:block shadow-lg bg-gray-100 z-10">
                     <div className="p-2 cursor-pointer ">
                         <ul className="w-full">
                             <li className="px-4 py-2 border-b border-gray-300 text-black capitalize list-none text-sm cursor-pointer font-medium">
@@ -275,7 +275,7 @@ function Navlist({ visibility, nav }) {
                         <li className="cursor-pointer p-2 ">Check Shirt</li>
                     </ul>
                 )}
-                <div className="absolute py-2 w-[200px] hidden lg:group-hover:block shadow-lg bg-gray-100">
+                <div className="absolute py-2 w-[200px] hidden lg:group-hover:block shadow-lg bg-gray-100 z-10">
                     <div className="p-2 cursor-pointer ">
                         <ul className="w-full">
                             <li className="px-4 py-2 border-b border-gray-300 text-black capitalize list-none text-sm cursor-pointer font-medium">
@@ -345,7 +345,7 @@ function Navlist({ visibility, nav }) {
                         <li className="cursor-pointer p-2 ">Check Shirt</li>
                     </ul>
                 )}
-                <div className="absolute py-2 w-[200px] hidden lg:group-hover:block shadow-lg bg-gray-100">
+                <div className="absolute py-2 w-[200px] hidden lg:group-hover:block shadow-lg bg-gray-100 z-10">
                     <div className="p-2 cursor-pointer ">
                         <ul className="w-full">
                             <li className="px-4 py-2 border-b border-gray-300 text-black capitalize list-none text-sm cursor-pointer font-medium">
@@ -406,7 +406,7 @@ function Navlist({ visibility, nav }) {
                         <li className="cursor-pointer p-2 ">Check Shirt</li>
                     </ul>
                 )}
-                <div className="absolute py-2 w-[200px] hidden lg:group-hover:block shadow-lg bg-gray-100">
+                <div className="absolute py-2 w-[200px] hidden lg:group-hover:block shadow-lg bg-gray-100 z-10">
                     <div className="p-2 cursor-pointer ">
                         <ul className="w-full">
                             <li className="px-4 py-2 border-b border-gray-300 text-black capitalize list-none text-sm cursor-pointer font-medium">
@@ -451,7 +451,7 @@ function Navlist({ visibility, nav }) {
                         </li>
                     </ul>
                 )}
-                <div className="absolute py-2 w-[200px] hidden lg:group-hover:block shadow-lg bg-gray-100">
+                <div className="absolute py-2 w-[200px] hidden lg:group-hover:block shadow-lg bg-gray-100 z-10">
                     <div className="p-2 cursor-pointer ">
                         <ul className="w-full">
                             <li className="px-4 py-2 text-black capitalize list-none text-sm cursor-pointer font-medium">
