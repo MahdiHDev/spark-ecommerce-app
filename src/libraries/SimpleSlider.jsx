@@ -26,7 +26,7 @@ export default function SimpleSlider({ products }) {
                 breakpoint: 768,
                 settings: {
                     arrows: false,
-                    slidesToShow: 2,
+                    slidesToShow: 3,
                     slidesToScroll: 1,
                 },
             },
