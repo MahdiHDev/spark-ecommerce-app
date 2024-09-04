@@ -51,7 +51,7 @@ export default function SimpleSlider({ products }) {
                                 <img
                                     src={product.img}
                                     alt=""
-                                    className="w-[150px] sm:w-full h-[180px] object-cover p-2 rounded-2xl"
+                                    className="w-[150px] sm:w-full h-[150px] sm:h-[180px] object-cover p-2 rounded-2xl"
                                 />
                                 <p className="text-gray-500 text-md">
                                     {product.name}
