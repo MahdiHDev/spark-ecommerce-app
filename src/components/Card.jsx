@@ -5,7 +5,7 @@ const Card = ({ item }) => {
         <div className="p-4 border borer-gray-300 rounded-md hover:shadow-xl duration-300 cursor-pointer">
             <img
                 src={item.image}
-                className="h-[200px] w-[200px] object-cover"
+                className="h-[150px] sm:h-[200px] w-full object-cover"
                 alt=""
             />
             <h1 className="text-center mt-1 text-gray-600">{item.name}</h1>

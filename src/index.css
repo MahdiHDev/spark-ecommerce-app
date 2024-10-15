@@ -7,7 +7,7 @@
 
 /* Additonal custom styles */
 .max-width {
-    @apply max-w-[1270px] mx-auto px-4;
+    @apply max-w-[1280px] mx-auto px-4;
 }
 
 * {

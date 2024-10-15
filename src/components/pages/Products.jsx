@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import img1 from '../../assets/images/1.jpg';
 import img10 from '../../assets/images/10.jpg';
@@ -138,25 +137,43 @@ const Products = () => {
                     Category
                 </Link>
             </p>
-            <div className="flex gap-10 mt-10">
-                <div className="p-3 w-1/4 border-r border-gray-300 sticky top-0">
+            <div className="2lg:flex gap-10 mt-10">
+                <div className="2lg:p-3 w-full 2lg:w-1/4 2lg:border-r border-gray-300 2lg:sticky top-0">
                     <h3 className=" text-xl">Categories</h3>
-                    <ul className="text-gray-500 px-2 mt-1">
-                        <li className="cursor-pointer py-1">All Products</li>
-                        <li className="cursor-pointer py-1">Trending</li>
-                        <li className="cursor-pointer py-1">Latest</li>
-                        <li className="cursor-pointer py-1">
+                    <ul className="text-gray-500 px-2 py-4 mt-1 flex flex-wrap 2lg:flex-col gap-3">
+                        <li className="cursor-pointer p-2 2lg:px-0 bg-primary 2lg:bg-white rounded-md text-sm 2lg:text-[16px] text-white 2lg:text-gray-500">
+                            All Products
+                        </li>
+                        <li className="cursor-pointer p-2 2lg:px-0 bg-primary 2lg:bg-white rounded-md text-sm 2lg:text-[16px] text-white 2lg:text-gray-500">
+                            Trending
+                        </li>
+                        <li className="cursor-pointer p-2 2lg:px-0 bg-primary 2lg:bg-white rounded-md text-sm 2lg:text-[16px] text-white 2lg:text-gray-500">
+                            Latest
+                        </li>
+                        <li className="cursor-pointer p-2 2lg:px-0 bg-primary 2lg:bg-white rounded-md text-sm 2lg:text-[16px] text-white 2lg:text-gray-500">
                             Mash-Fabric-Jersy
                         </li>
-                        <li className="cursor-pointer py-1">Jeans</li>
-                        <li className="cursor-pointer py-1">Wallet</li>
-                        <li className="cursor-pointer py-1">Bag</li>
-                        <li className="cursor-pointer py-1">Jacket</li>
-                        <li className="cursor-pointer py-1">Trowser</li>
-                        <li className="cursor-pointer py-1">Check Shirt</li>
+                        <li className="cursor-pointer p-2 2lg:px-0 bg-primary 2lg:bg-white rounded-md text-sm 2lg:text-[16px] text-white 2lg:text-gray-500">
+                            Jeans
+                        </li>
+                        <li className="cursor-pointer p-2 2lg:px-0 bg-primary 2lg:bg-white rounded-md text-sm 2lg:text-[16px] text-white 2lg:text-gray-500">
+                            Wallet
+                        </li>
+                        <li className="cursor-pointer p-2 2lg:px-0 bg-primary 2lg:bg-white rounded-md text-sm 2lg:text-[16px] text-white 2lg:text-gray-500">
+                            Bag
+                        </li>
+                        <li className="cursor-pointer p-2 2lg:px-0 bg-primary 2lg:bg-white rounded-md text-sm 2lg:text-[16px] text-white 2lg:text-gray-500">
+                            Jacket
+                        </li>
+                        <li className="cursor-pointer p-2 2lg:px-0 bg-primary 2lg:bg-white rounded-md text-sm 2lg:text-[16px] text-white 2lg:text-gray-500">
+                            Trowser
+                        </li>
+                        <li className="cursor-pointer p-2 2lg:px-0 bg-primary 2lg:bg-white rounded-md text-sm 2lg:text-[16px] text-white 2lg:text-gray-500">
+                            Check Shirt
+                        </li>
                     </ul>
                 </div>
-                <div className="w-3/4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 items-start">
+                <div className="w-full 2lg:w-3/4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 items-center">
                     {cardItems.map((cardItem, i) => {
                         return <Card key={i} item={cardItem} />;
                     })}
