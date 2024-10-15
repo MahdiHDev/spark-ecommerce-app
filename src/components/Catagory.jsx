@@ -45,13 +45,13 @@ const categories = [
 
 const Catagory = () => {
     return (
-        <div className="flex gap-2 flex-wrap my-5 justify-center items-center">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4  gap-2 my-5 justify-center items-center">
             {categories.map((category, i) => {
                 return (
                     <Link
                         to="/about"
                         key={i}
-                        className="p-2 w-[45%] md:w-[30%] lg:w-[20%] h-[180px] md:h-[250px] relative cursor-pointer object-cover transition-transform transform hover:scale-105 hover:shadow-xl"
+                        className="p-2  h-[150px] md:h-[250px] relative cursor-pointer object-cover transition-transform transform hover:scale-105 hover:shadow-xl"
                     >
                         <img
                             src={category.catagoryImg}

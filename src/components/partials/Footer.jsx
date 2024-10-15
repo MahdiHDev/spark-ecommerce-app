@@ -4,7 +4,7 @@ import Image from '../../assets/logo/logo.jpg';
 
 function Footer() {
     return (
-        <div className="bg-black text-white py-3 px-10">
+        <div className="bg-black text-white py-3 px-10 mt-10">
             <div className="max-width md:flex justify-between flex-wrap">
                 <div>
                     <div className="flex items-center gap-1 pt-2">

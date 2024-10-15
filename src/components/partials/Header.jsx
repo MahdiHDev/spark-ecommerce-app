@@ -34,14 +34,17 @@ export default function StickyNavbar() {
             <div className="max-h-[768px] w-full bg-black">
                 <Navbar className="sticky top-0 z-9 h-max max-w-[90%] mx-auto rounded-none px-4 py-2 lg:px-8 lg:py-4 bg-black text-white shadow-none border-none">
                     <div className="flex items-center justify-between text-blue-gray-900">
-                        <div className="mr-4 cursor-pointer py-1.5 font-medium flex items-center gap-2 text-sm sm:text-md">
+                        <Link
+                            to="/"
+                            className="mr-4 cursor-pointer py-1.5 font-medium flex items-center gap-2 text-sm sm:text-md"
+                        >
                             <img
                                 src={Logo}
                                 alt=""
                                 className="h-[24px] w-[24px] sm:h-[45px] sm:w-[45px] rounded-full"
                             />
                             Spark Men&apos;s Fashion
-                        </div>
+                        </Link>
                         <div className="lg:flex justify-center items-center hidden">
                             <input
                                 className="w-[450px] py-2 pl-4 outline-none  border border-solid border-red-300 text-gray-700"

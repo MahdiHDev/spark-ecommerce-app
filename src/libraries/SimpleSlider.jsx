@@ -10,6 +10,9 @@ export default function SimpleSlider({ products }) {
         dots: false,
         infinite: true,
         speed: 500,
+        arrows: true,
+        autoplay: true,
+        autoplaySpeed: 2000,
         slidesToShow: 5,
         slidesToScroll: 1,
         nextArrow: <IoIosArrowForward />,
@@ -46,7 +49,7 @@ export default function SimpleSlider({ products }) {
             <Slider ref={slider} {...settings}>
                 {products.map((product, i) => {
                     return (
-                        <div key={i}>
+                        <div key={i} className="mb-6">
                             <div className="sm:w-90% sm:p-2 flex flex-col justify-center items-center shadow-xl m-2 mx-4 border border-gray-200">
                                 <img
                                     src={product.img}

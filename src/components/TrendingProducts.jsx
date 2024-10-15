@@ -72,7 +72,7 @@ const TrendingProducts = () => {
 
     return (
         <div>
-            <h2 className="text-2xl p-4 mx-6">
+            <h2 className="text-xl sm:text-2xl sm:p-4 sm:mx-6">
                 Trending Products <IoIosTrendingUp className="inline" />
             </h2>
             <SimpleSlider products={products} />

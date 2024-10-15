@@ -2,6 +2,7 @@ import classes from '../styles/textanimation.module.css';
 
 import React from 'react';
 import { FaArrowRight } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import TextTransition, { presets } from 'react-text-transition';
 
 const TEXTS = [
@@ -29,9 +30,12 @@ const Banner = () => {
             <TextTransition springConfig={presets.wobbly}>
                 {TEXTS[index % TEXTS.length]}
             </TextTransition>
-            <div className="mt-10 bg-primary text-white hover:bg-white hover:text-primary duration-300 z-10 flex justify-center items-center md:text-lg py-2 px-6 gap-3 rounded-md cursor-pointer shadow-gray-500 hover:shadow-primary shadow-md text-sm">
+            <Link
+                to="/products"
+                className="mt-10 bg-primary text-white hover:bg-white hover:text-primary duration-300 z-10 flex justify-center items-center md:text-lg py-2 px-6 gap-3 rounded-md cursor-pointer text-sm"
+            >
                 Shop Now <FaArrowRight />
-            </div>
+            </Link>
         </div>
     );
 };
