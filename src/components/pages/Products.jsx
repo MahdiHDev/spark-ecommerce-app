@@ -1,129 +1,65 @@
+import { useState } from 'react';
+import { MdProductionQuantityLimits } from 'react-icons/md';
 import { Link } from 'react-router-dom';
-import img1 from '../../assets/images/1.jpg';
-import img10 from '../../assets/images/10.jpg';
-import img11 from '../../assets/images/11.jpg';
-import img12 from '../../assets/images/12.jpg';
-import img13 from '../../assets/images/13.jpg';
-import img14 from '../../assets/images/14.jpg';
-import img15 from '../../assets/images/15.jpg';
-import img16 from '../../assets/images/16.jpg';
-import img17 from '../../assets/images/17.jpg';
-import img18 from '../../assets/images/18.jpg';
-import img19 from '../../assets/images/19.jpg';
-import img2 from '../../assets/images/2.jpg';
-import img20 from '../../assets/images/20.jpg';
-import img3 from '../../assets/images/3.jpg';
-import img4 from '../../assets/images/4.jpg';
-import img5 from '../../assets/images/5.jpg';
-import img6 from '../../assets/images/6.jpg';
-import img7 from '../../assets/images/7.jpg';
-import img8 from '../../assets/images/8.jpg';
-import img9 from '../../assets/images/9.jpg';
+import { useGetPaginatedProductsQuery } from '../../services/productsApi';
 import Card from '../Card';
 
 const Products = () => {
-    const cardItems = [
-        {
-            image: img1,
-            name: 'This is a product',
-            price: '480',
-        },
-        {
-            image: img2,
-            name: 'This is a product',
-            price: '480',
-        },
-        {
-            image: img3,
-            name: 'This is a product',
-            price: '480',
-        },
-        {
-            image: img4,
-            name: 'This is a product',
-            price: '480',
-        },
-        {
-            image: img5,
-            name: 'This is a product',
-            price: '480',
-        },
-        {
-            image: img6,
-            name: 'This is a product',
-            price: '480',
-        },
-        {
-            image: img7,
-            name: 'This is a product',
-            price: '480',
-        },
-        {
-            image: img8,
-            name: 'This is a product',
-            price: '480',
-        },
-        {
-            image: img9,
-            name: 'This is a product',
-            price: '480',
-        },
-        {
-            image: img10,
-            name: 'This is a product',
-            price: '480',
-        },
-        {
-            image: img11,
-            name: 'This is a product',
-            price: '480',
-        },
-        {
-            image: img12,
-            name: 'This is a product',
-            price: '480',
-        },
-        {
-            image: img13,
-            name: 'This is a product',
-            price: '480',
-        },
-        {
-            image: img14,
-            name: 'This is a product',
-            price: '480',
-        },
-        {
-            image: img15,
-            name: 'This is a product',
-            price: '480',
-        },
-        {
-            image: img16,
-            name: 'This is a product',
-            price: '480',
-        },
-        {
-            image: img17,
-            name: 'This is a product',
-            price: '480',
-        },
-        {
-            image: img18,
-            name: 'This is a product',
-            price: '480',
-        },
-        {
-            image: img19,
-            name: 'This is a product',
-            price: '480',
-        },
-        {
-            image: img20,
-            name: 'This is a product',
-            price: '480',
-        },
-    ];
+    const [page, setPage] = useState(1);
+    const limit = 12;
+
+    const { data, error, isLoading } = useGetPaginatedProductsQuery({
+        page,
+        limit,
+    });
+    console.log(data);
+
+    const totalProducts = data?.payload?.pagination?.totalNumberOfProducts || 0;
+    const totalPages = Math.ceil(totalProducts / limit);
+
+    const renderPageButtons = () => {
+        const maxVisiblePages = 5; // Number of visible buttons at once
+        const buttons = [];
+
+        // Determine the start and end page numbers
+        let startPage = Math.max(1, page - Math.floor(maxVisiblePages / 2));
+        let endPage = startPage + maxVisiblePages - 1;
+
+        // Adjust if we're at the end of the total pages
+        if (endPage > totalPages) {
+            endPage = totalPages;
+            startPage = Math.max(1, endPage - maxVisiblePages + 1);
+        }
+
+        // Generate the page buttons
+        for (let i = startPage; i <= endPage; i++) {
+            buttons.push(
+                <button
+                    key={i}
+                    onClick={() => setPage(i)}
+                    disabled={page === i}
+                    style={{
+                        fontWeight: page === i ? 'bold' : 'normal',
+                    }}
+                    className={`bg-primary text-white mx-1 p-[4px] rounded-sm text-sm shadow-lg ${
+                        page === i ? 'bg-green-500' : ''
+                    } hover:bg-gray-200 hover:text-black shadow-gray-500 shadow-sm cursor-pointer`}
+                >
+                    {i <= 9 ? `0${i}` : i}
+                </button>
+            );
+        }
+
+        return buttons;
+    };
+
+    const handleLastPage = () => {
+        setPage(totalPages);
+    };
+
+    const handleFirstPage = () => {
+        setPage(1);
+    };
 
     return (
         <div className="max-width">
@@ -173,10 +109,64 @@ const Products = () => {
                         </li>
                     </ul>
                 </div>
+
+                {isLoading && (
+                    <p className="text-center text-xl text-gray-400">
+                        Loading...
+                    </p>
+                )}
                 <div className="w-full 2lg:w-3/4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 items-center">
-                    {cardItems.map((cardItem, i) => {
-                        return <Card key={i} item={cardItem} />;
-                    })}
+                    {data &&
+                        data?.payload?.products.map((product, id) => {
+                            return <Card key={id} item={product} />;
+                        })}
+                </div>
+
+                {error && (
+                    <div className="w-full 2lg:w-3/4 flex justify-center items-center p-5 flex-col text-gray-400">
+                        <MdProductionQuantityLimits className="text-5xl m-4 " />
+                        <p>No Products Found</p>
+                    </div>
+                )}
+            </div>
+            <div className="text-center pt-5 mt-5">
+                {/* Pagination controls */}
+                <div>
+                    <button
+                        onClick={() => setPage(page - 1)}
+                        disabled={page === 1}
+                        className="bg-primary text-white mx-1 p-[4px] rounded-sm text-sm hover:bg-gray-200 hover:text-black shadow-gray-500 shadow-sm cursor-pointer"
+                    >
+                        Previous
+                    </button>
+                    {totalPages > 10 && (
+                        <button
+                            className="bg-primary text-white mx-1 p-[4px] rounded-sm text-sm hover:bg-gray-200 hover:text-black shadow-gray-500 shadow-sm cursor-pointer"
+                            onClick={handleFirstPage}
+                        >
+                            First
+                        </button>
+                    )}
+
+                    {/* Render page buttons 1 to 5 */}
+                    {renderPageButtons()}
+                    {/* Render 'Last' button */}
+                    {totalPages > 5 && (
+                        <button
+                            className="bg-primary text-white mx-1 p-[4px] rounded-sm text-sm shadow-lg hover:bg-gray-200 hover:text-black shadow-gray-500 shadow-sm cursor-pointer"
+                            onClick={handleLastPage}
+                            style={{ marginLeft: '10px' }}
+                        >
+                            Last
+                        </button>
+                    )}
+                    <button
+                        className="bg-primary text-white mx-1 p-[4px] rounded-sm text-sm shadow-lg hover:bg-gray-200 hover:text-black shadow-gray-500 shadow-sm cursor-pointer"
+                        onClick={() => setPage(page + 1)}
+                        disabled={page === totalPages}
+                    >
+                        Next
+                    </button>
                 </div>
             </div>
         </div>
