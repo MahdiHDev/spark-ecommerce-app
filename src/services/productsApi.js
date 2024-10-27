@@ -11,7 +11,10 @@ export const api = createApi({
             query: ({ page = 1, limit = 10 }) =>
                 `products?page=${page}&limit=${limit}`,
         }),
+        getProductById: builder.query({
+            query: (productSlug) => `products/${productSlug}`,
+        }),
     }),
 });
 
-export const { useGetPaginatedProductsQuery } = api;
+export const { useGetPaginatedProductsQuery, useGetProductByIdQuery } = api;

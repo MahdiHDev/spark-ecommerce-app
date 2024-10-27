@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MdProductionQuantityLimits } from 'react-icons/md';
+import { MdNavigateNext, MdProductionQuantityLimits } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { useGetPaginatedProductsQuery } from '../../services/productsApi';
 import Card from '../Card';
@@ -64,11 +64,11 @@ const Products = () => {
     return (
         <div className="max-width">
             <h1 className="text-3xl p-2">#Products</h1>
-            <p className="text-gray-400 p-3">
+            <p className="text-gray-400 p-3 flex items-center">
                 <Link className="hover:underline" to="/">
                     Home
-                </Link>{' '}
-                {'#'}{' '}
+                </Link>
+                <MdNavigateNext />
                 <Link className="hover:underline" to="/products">
                     Category
                 </Link>

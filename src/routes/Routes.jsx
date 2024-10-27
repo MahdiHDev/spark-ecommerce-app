@@ -5,6 +5,7 @@ import Home from '../components/pages/Home';
 import Notfound from '../components/pages/Notfound';
 import Playground from '../components/pages/Playground';
 import Products from '../components/pages/Products';
+import SingleProduct from '../components/pages/SingleProduct';
 import Layout from './Layout';
 
 export const router = createBrowserRouter([
@@ -25,7 +26,11 @@ export const router = createBrowserRouter([
                 element: <Products />,
             },
             {
-                path: '/*',
+                path: '/products/:productId',
+                element: <SingleProduct />,
+            },
+            {
+                path: '*',
                 element: <Notfound />,
             },
             {
