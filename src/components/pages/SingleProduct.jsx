@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { MdNavigateNext } from 'react-icons/md';
 import ReactImageZoom from 'react-image-zoom';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useGetProductByIdQuery } from '../../services/productsApi';
 
 const SingleProduct = () => {
@@ -11,6 +11,9 @@ const SingleProduct = () => {
 
     const { productId } = useParams();
     const { data, error, isLoading } = useGetProductByIdQuery(productId);
+
+    const navigate = useNavigate();
+    const isAuthenticated = false;
 
     const sizes = ['M', 'L', 'XL', 'XXL'];
 
@@ -47,6 +50,12 @@ const SingleProduct = () => {
         if (quantity > 1) {
             setQuantity(quantity - 1);
             setPriceState(priceState - data.payload.product.price);
+        }
+    };
+
+    const handleAddToCart = () => {
+        if (!isAuthenticated) {
+            navigate('/login');
         }
     };
 
@@ -155,6 +164,18 @@ const SingleProduct = () => {
                                 </span>{' '}
                                 {product.description}
                             </p>
+                        </div>
+                        {/* add to cart and buy now section  */}
+                        <div className="mt-5 flex gap-5 text-white font-medium">
+                            <button
+                                className="py-2 px-10 bg-primary rounded-md shadow-lg"
+                                onClick={handleAddToCart}
+                            >
+                                Add To Cart
+                            </button>
+                            <button className="py-2 px-10 bg-green-500 rounded-md shadow-lg">
+                                Buy Now
+                            </button>
                         </div>
                     </div>
                 </div>

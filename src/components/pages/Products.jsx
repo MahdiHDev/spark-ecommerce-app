@@ -153,7 +153,7 @@ const Products = () => {
                     {/* Render 'Last' button */}
                     {totalPages > 5 && (
                         <button
-                            className="bg-primary text-white mx-1 p-[4px] rounded-sm text-sm shadow-lg hover:bg-gray-200 hover:text-black shadow-gray-500 shadow-sm cursor-pointer"
+                            className="bg-primary text-white mx-1 p-[4px] rounded-sm text-sm shadow-lg hover:bg-gray-200 hover:text-black shadow-gray-500  cursor-pointer"
                             onClick={handleLastPage}
                             style={{ marginLeft: '10px' }}
                         >
