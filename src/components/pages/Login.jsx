@@ -1,7 +1,14 @@
-import { FaRegEye } from 'react-icons/fa';
+import { useState } from 'react';
+import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
+    const [show, setShow] = useState(false);
+
+    const handleShow = () => {
+        setShow((prevShow) => !prevShow);
+    };
+
     return (
         <div className="max-w-[400px] mx-auto h-screen md:h-[70vh] flex flex-col justify-center p-4">
             <form
@@ -23,11 +30,21 @@ const Login = () => {
                     <label className=" py-1">Password: </label>
                     <div className="relative">
                         <input
-                            type="password"
+                            type={`${show ? 'text' : 'password'}`}
                             placeholder="password"
                             className="w-full border p-2 outline-green-300 "
                         />
-                        <FaRegEye className="absolute text-xl right-[20px] bottom-[12px] text-gray-500" />
+                        {show ? (
+                            <FaRegEye
+                                className="absolute text-xl right-[20px] bottom-[12px] text-gray-500 cursor-pointer"
+                                onClick={handleShow}
+                            />
+                        ) : (
+                            <FaRegEyeSlash
+                                className="absolute text-xl right-[20px] bottom-[12px] text-gray-500 cursor-pointer"
+                                onClick={handleShow}
+                            />
+                        )}
                     </div>
                     <button
                         type="Submit"
@@ -36,9 +53,9 @@ const Login = () => {
                         Login
                     </button>
                     <p className="pt-3 text-center">
-                        Don't Have an Account?{' '}
+                        Don&apos;t Have an Account?{' '}
                         <Link
-                            to="sign-up"
+                            to="/sign-up"
                             className="underline hover:text-green-500"
                         >
                             Sign Up

@@ -1,19 +1,19 @@
 import { useEffect, useState } from 'react';
 import { MdNavigateNext } from 'react-icons/md';
 import ReactImageZoom from 'react-image-zoom';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useGetProductByIdQuery } from '../../services/productsApi';
+import ToastifyComponent from '../partials/ToastifyComponent';
 
 const SingleProduct = () => {
     const [selectedSize, setSelectedSize] = useState(null);
     const [quantity, setQuantity] = useState(1);
     const [priceState, setPriceState] = useState(0);
+    const [toastMessage, setToastMessage] = useState('');
+    const [toastType, setToastType] = useState('');
 
     const { productId } = useParams();
     const { data, error, isLoading } = useGetProductByIdQuery(productId);
-
-    const navigate = useNavigate();
-    const isAuthenticated = false;
 
     const sizes = ['M', 'L', 'XL', 'XXL'];
 
@@ -53,10 +53,10 @@ const SingleProduct = () => {
         }
     };
 
+    // Toastify handling stuffs !!!
     const handleAddToCart = () => {
-        if (!isAuthenticated) {
-            navigate('/login');
-        }
+        setToastMessage('Product is added successfully!');
+        setToastType('success');
     };
 
     return (
@@ -168,12 +168,12 @@ const SingleProduct = () => {
                         {/* add to cart and buy now section  */}
                         <div className="mt-5 flex gap-5 text-white font-medium">
                             <button
-                                className="py-2 px-10 bg-primary rounded-md shadow-lg"
+                                className="py-2 px-10 bg-primary rounded-md shadow-lg text-sm md:text-md transition duration-300 hover:bg-white hover:text-primary"
                                 onClick={handleAddToCart}
                             >
                                 Add To Cart
                             </button>
-                            <button className="py-2 px-10 bg-green-500 rounded-md shadow-lg">
+                            <button className="py-2 px-10 bg-green-500 rounded-md shadow-lg text-sm md:text-md transition duration-300 hover:bg-white hover:text-primary">
                                 Buy Now
                             </button>
                         </div>
@@ -186,6 +186,14 @@ const SingleProduct = () => {
                     <p>No Products Found</p>
                 </div>
             )}
+
+            <div>
+                <ToastifyComponent
+                    message={toastMessage}
+                    type={toastType}
+                    clearMessage={() => setToastMessage('')}
+                />
+            </div>
         </div>
     );
 };
