@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react';
 import { MdNavigateNext } from 'react-icons/md';
 import ReactImageZoom from 'react-image-zoom';
+import { useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
+import { addItem } from '../../features/products/cartSlice';
 import { useGetProductByIdQuery } from '../../services/productsApi';
-import ToastifyComponent from '../partials/ToastifyComponent';
 
 const SingleProduct = () => {
     const [selectedSize, setSelectedSize] = useState(null);
     const [quantity, setQuantity] = useState(1);
     const [priceState, setPriceState] = useState(0);
-    const [toastMessage, setToastMessage] = useState('');
-    const [toastType, setToastType] = useState('');
 
     const { productId } = useParams();
     const { data, error, isLoading } = useGetProductByIdQuery(productId);
@@ -53,10 +52,12 @@ const SingleProduct = () => {
         }
     };
 
-    // Toastify handling stuffs !!!
-    const handleAddToCart = () => {
-        setToastMessage('Product is added successfully!');
-        setToastType('success');
+    // add to cart section
+    const dispatch = useDispatch();
+
+    const handleAddToCart = (product) => {
+        console.log(product);
+        dispatch(addItem(product));
     };
 
     return (
@@ -169,7 +170,13 @@ const SingleProduct = () => {
                         <div className="mt-5 flex gap-5 text-white font-medium">
                             <button
                                 className="py-2 px-10 bg-primary rounded-md shadow-lg text-sm md:text-md transition duration-300 hover:bg-white hover:text-primary"
-                                onClick={handleAddToCart}
+                                onClick={() =>
+                                    handleAddToCart({
+                                        ...product,
+                                        quantity,
+                                        price: priceState,
+                                    })
+                                }
                             >
                                 Add To Cart
                             </button>
@@ -186,14 +193,6 @@ const SingleProduct = () => {
                     <p>No Products Found</p>
                 </div>
             )}
-
-            <div>
-                <ToastifyComponent
-                    message={toastMessage}
-                    type={toastType}
-                    clearMessage={() => setToastMessage('')}
-                />
-            </div>
         </div>
     );
 };

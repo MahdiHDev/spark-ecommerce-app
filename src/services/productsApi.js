@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const api = createApi({
     reducerPath: 'api',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'https://mern-ecommerce-backend-z0p8.onrender.com/api/',
+        baseUrl: 'https://spark-ecommerce-backend.onrender.com/api/',
     }),
     endpoints: (builder) => ({
         getPaginatedProducts: builder.query({
