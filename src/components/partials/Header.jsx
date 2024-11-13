@@ -4,6 +4,7 @@ import { CgProfile } from 'react-icons/cg';
 import { CiSearch } from 'react-icons/ci';
 import { LuShoppingCart } from 'react-icons/lu';
 import { RxCross1 } from 'react-icons/rx';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/logo/logo.jpg';
 import Navlist from '../Navlist';
@@ -12,6 +13,11 @@ export default function StickyNavbar() {
     const [openNav, setOpenNav] = useState(false);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [search, setSearch] = useState('');
+
+    const cartItems = useSelector((state) => state.cart.items);
+
+    // calculate total number of items in the cart
+    const totalItems = cartItems.length;
 
     const handleSearch = (e) => {
         setSearch(e.target.value);
@@ -67,8 +73,14 @@ export default function StickyNavbar() {
                                     onClick={handleOpenSearch}
                                 />
                             </div>
-                            <Link to="/cart" className="mr-4  lg:block">
+                            <Link
+                                to="/cart"
+                                className="mr-4  lg:block relative"
+                            >
                                 <LuShoppingCart className="cursor-pointer h-6 w-6" />
+                                <p className="absolute top-[-8px] right-[-8px] text-primary bg-white rounded-[50%] h-[20px] w-[20px] text-sm flex justify-center items-center">
+                                    <span>{totalItems}</span>
+                                </p>
                             </Link>
                             <div
                                 className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"

@@ -56,7 +56,6 @@ const SingleProduct = () => {
     const dispatch = useDispatch();
 
     const handleAddToCart = (product) => {
-        console.log(product);
         dispatch(addItem(product));
     };
 
@@ -174,7 +173,8 @@ const SingleProduct = () => {
                                     handleAddToCart({
                                         ...product,
                                         quantity,
-                                        price: priceState,
+                                        subtotal: priceState,
+                                        size: selectedSize,
                                     })
                                 }
                             >

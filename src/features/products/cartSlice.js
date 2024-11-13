@@ -27,9 +27,29 @@ const cartSlice = createSlice({
                 toast.success('Product added successfully!');
             }
         },
+        updateQuantity: (state, action) => {
+            const { _id, quantity, subtotal } = action.payload;
+            const item = state.items.find((item) => item._id === _id);
+
+            if (item) {
+                item.quantity = quantity;
+                item.subtotal = subtotal;
+
+                // Remove item if quantity is 0
+                if (item.quantity <= 0) {
+                    state.items = state.items.filter(
+                        (item) => item._id !== _id
+                    );
+                }
+            }
+        },
+        removeItem: (state, action) => {
+            const itemId = action.payload;
+            state.items = state.items.filter((item) => item._id !== itemId);
+        },
     },
 });
 
-export const { addItem } = cartSlice.actions;
+export const { addItem, removeItem, updateQuantity } = cartSlice.actions;
 
 export default cartSlice.reducer;
